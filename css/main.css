@@ -1,0 +1,25 @@
+body{
+  background-color: #f7f7f7;
+  background-repeat: repeat;
+}
+
+#map {
+  height: 100%;
+  width: 100%;
+}
+
+html, body, #map-canvas {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.header-bar {
+  z-index: 1;
+  position: absolute;
+  background-color: #FFFFFF;
+  height: 40px;
+  width: 100%;
+  display: flex;
+}
