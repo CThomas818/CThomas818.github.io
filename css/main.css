@@ -25,11 +25,14 @@ html, body, #map-canvas {
 }
 
 .spinner {
-  margin: 100px auto;
   width: 50px;
   height: 40px;
   text-align: center;
   font-size: 10px;
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  z-index: 1;
 }
 
 .spinner > div {
@@ -37,6 +40,7 @@ html, body, #map-canvas {
   height: 100%;
   width: 6px;
   display: inline-block;
+
 
   -webkit-animation: sk-stretchdelay 1.2s infinite ease-in-out;
   animation: sk-stretchdelay 1.2s infinite ease-in-out;

@@ -11,22 +11,28 @@ function initMap() {
 
   var locations_array = new Array();
 
-  var map = new google.maps.Map(document.getElementById('map'), {
-   zoom: 12,
-   center: new google.maps.LatLng(48.435243, -123.367508),
-  });
-
   //Getting the locations from the API as JSON, then pushing each location to an array.
   $.getJSON("https://radiant-mesa-71731.herokuapp.com/locations", function(data) {
       $.each(data, function(i, obj){
         locations_array.push(obj);
       });
+      
+      var map = new google.maps.Map(document.getElementById('map'), {
+       zoom: 12,
+       center: new google.maps.LatLng(48.435243, -123.367508),
+      });
+
+      google.maps.event.addListener(map, 'click', function(event){
+        place_marker(event.latLng, locations_array, map);
+      });
+
+
       pull_markers(locations_array, map);
+      $('.spinner').remove();
+
+
   });
 
-  google.maps.event.addListener(map, 'click', function(event){
-    place_marker(event.latLng, locations_array, map);
-  });
 
 }
 
