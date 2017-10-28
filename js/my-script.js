@@ -16,7 +16,8 @@ function initMap() {
       $.each(data, function(i, obj){
         locations_array.push(obj);
       });
-      
+
+
       var map = new google.maps.Map(document.getElementById('map'), {
        zoom: 12,
        center: new google.maps.LatLng(48.435243, -123.367508),
@@ -26,7 +27,7 @@ function initMap() {
         place_marker(event.latLng, locations_array, map);
       });
 
-
+      
       pull_markers(locations_array, map);
       $('.spinner').remove();
 
