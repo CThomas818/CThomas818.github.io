@@ -31,7 +31,7 @@ class Marker {
       return form_string;
 
   }
-  add_listeners(infowindow: any){
+  add_listeners(infowindow: any, marker: any){
 
     var content_string = this.create_content();
     var form_string = this.create_form();
@@ -40,8 +40,9 @@ class Marker {
     var content = this.content;
     var that = this;
 
-    this.add_delete_button_listener(_id)
+    this.add_delete_button_listener(_id, marker)
 
+    //Add the edit button listener
     $('#edit-button').on('click', function(){
       infowindow.setContent(form_string);
       //Making a Jquery post for submitting a form to the api, updating the infowindow with new content.
@@ -59,14 +60,15 @@ class Marker {
    })
 
   }
-  add_delete_button_listener(_id: string){
-    //Deleting a marker.
+  add_delete_button_listener(_id: string, marker: any){
+    //Deleting a marker listener.
     $('#delete-button').on('click', function(){
       $.ajax({
         url: "https://radiant-mesa-71731.herokuapp.com/locations/"+ _id,
         type: "DELETE",
         success: function(result){
           //Refresh or something
+          marker.setMap(null);
           console.log("removed marker: "+_id);
         }
       });
