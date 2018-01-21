@@ -32,6 +32,7 @@ var Marker = /** @class */ (function () {
         var _id = this._id;
         var name = this.name;
         var content = this.content;
+        var that = this;
         //Deleting a marker.
         $('#delete-button').on('click', function () {
             $.ajax({
