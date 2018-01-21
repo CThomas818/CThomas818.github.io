@@ -32,17 +32,11 @@ function initMap() {
 
       pull_markers(locations_array, map);
       $('.spinner').remove();
-
-
   });
-
-
 }
 
 function removeMarker(marker){
-
     marker.setMap(null);
-
 }
 
 
@@ -77,49 +71,6 @@ function pull_markers(locations_array, map){
 
   }
 }
-
-function add_marker_listeners(locations_array, map, result, i, marker){
-  var location_id = locations_array[i]._id;
-  //This function creates the html content of a infowindow based on the locations_array index.
-   var content_string = create_content(locations_array, location_id);
-
-   infowindow.setContent(content_string);
-   infowindow.open(map, marker);
-
-   //Deleting a marker.
-   $('#delete-button').on('click', function(){
-     $.ajax({
-       url: "https://radiant-mesa-71731.herokuapp.com/locations/"+locations_array[i]._id,
-       type: "DELETE",
-       success: function(result){
-         removeMarker(markers[i]);
-       }
-     });
-   })
-   $('#edit-button').on('click', function(){
-     var form_string = create_form(locations_array, location_id);
-     infowindow.setContent(form_string);
-
-     //Making a Jquery post for submitting a form to the api, updating the infowindow with new content.
-     $('#myForm').on('submit', function(){
-       $.post($(this).attr('action'), $(this).serialize(), function(response){
-          refresh_page(map);
-       },'json');
-       return false;
-     });
-
-    if(locations_array[i].name != "New Place" || locations_array[i].content != "Write about your memories here!"){
-      $('#name-field').val(locations_array[i].name);
-      $('#content-field').val(locations_array[i].content);
-    }
-
-
-
-  })
-
-
-}
-
 
 //Finds the index of a location in locations_array given the id.
 function find_id_index(locations_array, value){
