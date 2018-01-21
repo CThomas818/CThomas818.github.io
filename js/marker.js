@@ -33,17 +33,7 @@ var Marker = /** @class */ (function () {
         var name = this.name;
         var content = this.content;
         var that = this;
-        //Deleting a marker.
-        $('#delete-button').on('click', function () {
-            $.ajax({
-                url: "https://radiant-mesa-71731.herokuapp.com/locations/" + _id,
-                type: "DELETE",
-                success: function (result) {
-                    //Refresh or something
-                    console.log("removed marker: " + _id);
-                }
-            });
-        });
+        this.add_delete_button_listener(_id);
         $('#edit-button').on('click', function () {
             infowindow.setContent(form_string);
             //Making a Jquery post for submitting a form to the api, updating the infowindow with new content.
@@ -59,6 +49,21 @@ var Marker = /** @class */ (function () {
                 $('#content-field').val(content);
             }
         });
+    };
+    Marker.prototype.add_delete_button_listener = function (_id) {
+        //Deleting a marker.
+        $('#delete-button').on('click', function () {
+            $.ajax({
+                url: "https://radiant-mesa-71731.herokuapp.com/locations/" + _id,
+                type: "DELETE",
+                success: function (result) {
+                    //Refresh or something
+                    console.log("removed marker: " + _id);
+                }
+            });
+        });
+    };
+    Marker.prototype.add_edit_button_listener = function (name, content) {
     };
     Marker.prototype.get_id = function () {
         return this._id;

@@ -40,6 +40,26 @@ class Marker {
     var content = this.content;
     var that = this;
 
+    this.add_delete_button_listener(_id)
+
+    $('#edit-button').on('click', function(){
+      infowindow.setContent(form_string);
+      //Making a Jquery post for submitting a form to the api, updating the infowindow with new content.
+      $('#myForm').on('submit', function(){
+        $.post($(this).attr('action'), $(this).serialize(), function(response){
+           //Refresh or something.
+           console.log("edited marker: "+name);
+        },'json');
+        return false;
+      });
+     if(name != "New Place" || content != "Write about your memories here!"){
+       $('#name-field').val(name);
+       $('#content-field').val(content);
+     }
+   })
+
+  }
+  add_delete_button_listener(_id: string){
     //Deleting a marker.
     $('#delete-button').on('click', function(){
       $.ajax({
@@ -51,27 +71,9 @@ class Marker {
         }
       });
     })
+  }
+  add_edit_button_listener(name: string, content: string){
 
-    $('#edit-button').on('click', function(){
-      infowindow.setContent(form_string);
-
-      //Making a Jquery post for submitting a form to the api, updating the infowindow with new content.
-      $('#myForm').on('submit', function(){
-        $.post($(this).attr('action'), $(this).serialize(), function(response){
-           //Refresh or something.
-           console.log("edited marker: "+name);
-        },'json');
-        return false;
-      });
-
-     if(name != "New Place" || content != "Write about your memories here!"){
-       $('#name-field').val(name);
-       $('#content-field').val(content);
-     }
-
-
-
-   })
 
   }
   get_id(){
