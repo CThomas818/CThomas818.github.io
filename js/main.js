@@ -19,6 +19,7 @@ function initMap() {
       });
 
 
+
       var map = new google.maps.Map(document.getElementById('map'), {
        zoom: 12,
        center: new google.maps.LatLng(48.435243, -123.367508),
@@ -57,34 +58,19 @@ function pull_markers(locations_array, map){
       var markerObj = locations_array[i];
 
       //Setting the google maps infowindow (appears when clicked) of the marker based on the index of the array, i.
-      google.maps.event.addListener(marker, 'click', (function(markerObj, marker) {
+      google.maps.event.addListener(marker, 'click', (function(infowindow,markerObj,marker) {
            return function() {
-             //Here, we call the markerObj to create its content as a string, and then set the infowindow to that.
-              var content_string = markerObj.create_content();
-              infowindow.setContent(content_string);
 
-              //Adding the jquery event listeners to the buttons of the marker.
-              markerObj.add_listeners(infowindow);
+              var content_string = markerObj.create_content();
               infowindow.open(map, marker);
+              infowindow.setContent(content_string);
+              markerObj.add_listeners(infowindow,marker);
+
            }
-      })(markerObj, marker));
+      })(infowindow,markerObj,marker));
 
   }
 }
-
-//Finds the index of a location in locations_array given the id.
-function find_id_index(locations_array, value){
-
-  for(var i = 0; i < locations_array.length; i++) {
-         if(locations_array[i]._id === value) {
-             return i;
-         }
-
-     }
-     return -1;
-
-}
-
 
 //Places a marker with the specified location (latitude and longitude) onto the map.
 function place_marker(location, locations_array, map){
@@ -104,29 +90,23 @@ function place_marker(location, locations_array, map){
     data: {name: "New Place", latitude: location.lat(), longitude: location.lng(), content: "Write about your memories here!"},
     success: function(result){
 
-
-      console.log(result);
-
       markers.push(marker);
       marker.setMap(map);
 
       var markerObj = new Marker(result.name, result.content, result.latitude, result.longitude, result._id);
       locations_array.push(markerObj);
 
-      google.maps.event.addListener(marker, 'click', (function(marker) {
+
+      google.maps.event.addListener(marker, 'click', (function(infowindow,content_string,marker) {
            return function() {
 
-             //Here, we call the markerObj to create its content as a string, and then set the infowindow to that.
               var content_string = markerObj.create_content();
-              console.log(content_string);
-
-              infowindow.setContent(content_string);
               infowindow.open(map, marker);
+              infowindow.setContent(content_string);
+              markerObj.add_listeners(infowindow,marker);
 
-              //Adding the jquery event listeners to the buttons of the marker.
-              markerObj.add_listeners(infowindow);
            }
-      })(marker));
+      })(infowindow,markerObj,marker));
 
     }
   });
