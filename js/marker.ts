@@ -50,6 +50,7 @@ class Marker {
         $.post($(this).attr('action'), $(this).serialize(), function(response){
            //Refresh or something.
            console.log("edited marker: "+name);
+           location.reload();
         },'json');
         return false;
       });
