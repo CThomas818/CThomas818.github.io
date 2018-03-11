@@ -1,15 +1,10 @@
 import {Marker} from "./marker"
 
-/*
-Creates the google map and gets all the locations of the markers and puts them into an array: locations_array
-The function also adds a listener to the map to place_marker() on a click.
-*/
-
 var markers = [];
 
 var locations_array = new Array();
 
-(<any>window).initMap =function() {
+(<any>window).initMap = function() {
 
   //Getting the locations from the API as JSON, then pushing each location to an array.
   $.getJSON("https://radiant-mesa-71731.herokuapp.com/locations", function(data) {
@@ -35,13 +30,22 @@ var locations_array = new Array();
       $('.spinner').remove();
   });
 }
-
+/**
+ * Sets a marker to null, removing it from the google map.
+ * 
+ * @param {any} marker 
+ */
 function removeMarker(marker){
     marker.setMap(null);
 }
 
 
-//This function pulls each marker onto the map from the locations_array.
+/**
+ * This function pulls each marker onto the map from the locations_array.
+ * 
+ * @param {any} locations_array 
+ * @param {any} map 
+ */
 function pull_markers(locations_array, map){
 
   var infowindow = new google.maps.InfoWindow;
@@ -72,7 +76,13 @@ function pull_markers(locations_array, map){
   }
 }
 
-//Places a marker with the specified location (latitude and longitude) onto the map.
+/**
+ * Places a marker with the specified location (latitude and longitude) onto the map.
+ * 
+ * @param {any} location 
+ * @param {any} locations_array 
+ * @param {any} map 
+ */
 function place_marker(location, locations_array, map){
 
   var infowindow = new google.maps.InfoWindow;
@@ -113,7 +123,11 @@ function place_marker(location, locations_array, map){
 
 }
 
-//Simple function to reload the page - reflects changes in the database.
+/**
+ * Refreshes the window.
+ * 
+ * @param {any} map 
+ */
 function refresh_page(map){
   location.reload();
 }

@@ -1,10 +1,29 @@
-
-
+/**
+ * 
+ * 
+ * @export
+ * @class Marker
+ */
 export class Marker {
 
+  /**
+   * Creates an instance of Marker.
+   * @param {string} name 
+   * @param {string} content 
+   * @param {object} latitude 
+   * @param {object} longitude 
+   * @param {string} _id 
+   * @memberof Marker
+   */
   constructor(public name: string, public content: string, public latitude: object, public longitude: object, public _id: string){
 
   }
+  /**
+   * Creates a content string using Marker properties.
+   * 
+   * @returns 
+   * @memberof Marker
+   */
   create_content(){
     var content_string = '<div style="text-align: right;"><i id="edit-button" class="fa fa-pencil" aria-hidden="true" style="cursor: pointer; padding-right: 14px;"></i>' +
     '<i id="delete-button" class="fa fa-trash-o" aria-hidden="true" style="cursor: pointer;"></i></div>' +
@@ -16,6 +35,12 @@ export class Marker {
     return content_string;
 
   }
+  /**
+   * Creates a form html string to be used in the marker.
+   * 
+   * @returns 
+   * @memberof Marker
+   */
   create_form(){
 
     var _id = this._id;
@@ -31,6 +56,13 @@ export class Marker {
       return form_string;
 
   }
+  /**
+   * Adds event listeners to a marker.
+   * 
+   * @param {*} infowindow 
+   * @param {*} marker 
+   * @memberof Marker
+   */
   add_listeners(infowindow: any, marker: any){
 
     var content_string = this.create_content();
@@ -61,6 +93,13 @@ export class Marker {
    })
 
   }
+  /**
+   * Adds a listener to the delete-button within a marker.
+   * 
+   * @param {string} _id 
+   * @param {*} marker 
+   * @memberof Marker
+   */
   add_delete_button_listener(_id: string, marker: any){
     //Deleting a marker listener.
     $('#delete-button').on('click', function(){
@@ -75,15 +114,6 @@ export class Marker {
       });
     })
   }
-  add_edit_button_listener(name: string, content: string){
-
-
-  }
-  get_id(){
-    return this._id;
-  }
-
-
 }
 
 export default Marker;

@@ -8,13 +8,13 @@
     "googlemaps": "^1.12.0",
     "jquery": "^3.3.1",
     "ts-loader": "^4.0.1",
-    "typescript": "^2.7.2",
-    "webpack-cli": "^2.0.11"
+    "typescript": "^2.7.2"
   },
   "devDependencies": {
     "@types/googlemaps": "^3.30.7",
     "@types/node": "^9.4.7",
-    "webpack": "^4.1.1"
+    "webpack": "^4.1.1",
+    "webpack-cli": "^2.0.11"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
