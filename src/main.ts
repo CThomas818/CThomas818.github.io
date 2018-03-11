@@ -12,9 +12,7 @@ var locations_array = new Array();
         var markerObj = new Marker(obj.name, obj.content, obj.latitude, obj.longitude, obj._id);
         locations_array.push(markerObj);
       });
-
-
-
+      
       var map = new google.maps.Map(document.getElementById('map'), {
        zoom: 12,
        center: new google.maps.LatLng(48.435243, -123.367508),
