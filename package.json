@@ -1,0 +1,33 @@
+{
+  "name": "cthomas818.github.io",
+  "version": "1.0.0",
+  "description": "Website that uses Locationsapi. Tracks your locations that you enter in, and write about your experiences there.",
+  "main": "main.js",
+  "dependencies": {
+    "@types/jquery": "^3.3.1",
+    "googlemaps": "^1.12.0",
+    "jquery": "^3.3.1",
+    "ts-loader": "^4.0.1",
+    "typescript": "^2.7.2",
+    "webpack-cli": "^2.0.11"
+  },
+  "devDependencies": {
+    "@types/googlemaps": "^3.30.7",
+    "@types/node": "^9.4.7",
+    "webpack": "^4.1.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CThomas818/CThomas818.github.io.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CThomas818/CThomas818.github.io/issues"
+  },
+  "homepage": "https://github.com/CThomas818/CThomas818.github.io#readme"
+}

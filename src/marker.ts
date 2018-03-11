@@ -1,6 +1,6 @@
 
 
-class Marker {
+export class Marker {
 
   constructor(public name: string, public content: string, public latitude: object, public longitude: object, public _id: string){
 
@@ -85,3 +85,5 @@ class Marker {
 
 
 }
+
+export default Marker;

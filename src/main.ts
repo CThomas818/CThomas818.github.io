@@ -1,4 +1,4 @@
-
+import {Marker} from "./marker"
 
 /*
 Creates the google map and gets all the locations of the markers and puts them into an array: locations_array
@@ -9,7 +9,7 @@ var markers = [];
 
 var locations_array = new Array();
 
-function initMap() {
+(<any>window).initMap =function() {
 
   //Getting the locations from the API as JSON, then pushing each location to an array.
   $.getJSON("https://radiant-mesa-71731.herokuapp.com/locations", function(data) {
@@ -78,7 +78,7 @@ function place_marker(location, locations_array, map){
   var infowindow = new google.maps.InfoWindow;
   console.log(typeof infowindow);
 
-  marker = new google.maps.Marker({
+  let marker = new google.maps.Marker({
        position: location,
        map: map
   });

@@ -1,3 +1,5 @@
+"use strict";
+exports.__esModule = true;
 var Marker = /** @class */ (function () {
     function Marker(name, content, latitude, longitude, _id) {
         this.name = name;
@@ -73,3 +75,5 @@ var Marker = /** @class */ (function () {
     };
     return Marker;
 }());
+exports.Marker = Marker;
+exports["default"] = Marker;
